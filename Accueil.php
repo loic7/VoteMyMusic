@@ -9,14 +9,14 @@
 <body>
     <nav>
         <div class="logo">
-            <a href="index.html">VoteMyMusic</a>
+            <a href="index.php">VoteMyMusic</a>
         </div>
         <ul class="nav-links">
-            <li><a href="index.html">Accueil</a></li>
+            <li><a href="Accueil.php">Accueil</a></li>
             <li><a href="#">À propos</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
-        <a href="connexion.html" class="btn">Connexion</a>
+        <a href="connexion.php" class="btn">Connexion</a>
     </nav>
     <header>
         <h1>Bienvenue</h1>
@@ -28,7 +28,7 @@
                 Nous sommes ravis de vous accueillir dans notre communauté passionnée de musique, où votre voix compte et contribue à façonner les expériences musicales inoubliables. 
                 Que la musique vous accompagne dans chaque moment de votre séjour avec nous !</p>
         </div>
-        <a href="autre_page.html" class="btn2">Poursuivre</a>
+        <a href="ajout_ou_vote.php" class="btn2">Poursuivre</a>
     </main>
     <footer>
         <ul class="footer-links">
@@ -37,3 +37,5 @@
             <li><a href="#">Contact</a></li>
         </ul>
     </footer>
+</body>
+</html>
