@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <nav>
         <div class="logo">
@@ -16,20 +18,23 @@
             <li><a href="#">À propos</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
-        <a href="connexion.php" class="btn">Connexion</a>
     </nav>
-    <header>
-        <h1>Bienvenue</h1>
-    </header>
-    <main class="main">
-        <div class="message-box">
-            <p>Bienvenue sur VoteMyMusic ! Ce site est fier d'être en partenariat avec CVVEN. 
-                Ici, vous avez la possibilité de voter, proposer et soutenir des musiques lors des spectacles organisés sur le site de vacances. 
-                Nous sommes ravis de vous accueillir dans notre communauté passionnée de musique, où votre voix compte et contribue à façonner les expériences musicales inoubliables. 
-                Que la musique vous accompagne dans chaque moment de votre séjour avec nous !</p>
+    <div class="Titre">
+    <h1>INSCRIVEZ-VOUS</h1>
+    </div>
+        <div class="page-connexion">
+            <div class="formulaire">
+                <form class="connexion-formulaire">
+                    <input type="text" placeholder="nom">
+                    <input type="text" placeholder="prénom">
+                    <input type="email" placeholder="email">
+                    <input type="password" placeholder="mot de passe">
+                    <button type="submit">S'inscrire</button>
+                    
+                    <p class="message">déjà inscrit ? <a href="connexion.php">se connecter</a></p>
+                </form>
+            </div>
         </div>
-        <a href="musique.php" class="btn2">Poursuivre</a>
-    </main>
     <footer>
         <ul class="footer-links">
             <li><a href="#">Accueil</a></li>
@@ -38,4 +43,5 @@
         </ul>
     </footer>
 </body>
+
 </html>

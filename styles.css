@@ -98,7 +98,60 @@ header {
     background-color: #915006;
 }
 
+/* form*/
+.Titre{
+    text-align: center;
+    margin-top: 50px;
+}
+.formulaire {
+    display: flex;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-left: 800px;
+    margin-right: 800px;
+    margin-top: 200px;
+    margin-bottom: 200px;
 
+}
+
+.formulaire input[type="text"],
+.formulaire input[type="email"],
+.formulaire input[type="password"],
+.formulaire button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.formulaire button {
+    background-color: #f8b602;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+}
+
+.formulaire button:hover {
+    background-color: #915006;
+}
+
+.message {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.message a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.message a:hover {
+    text-decoration: underline;
+}
 
 
 
