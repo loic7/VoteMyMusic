@@ -11,7 +11,7 @@
 <body>
     <nav>
         <div class="logo">
-            <a href="index.php">VoteMyMusic</a>
+            <a href="Accueil.php">VoteMyMusic</a>
         </div>
         <ul class="nav-links">
             <li><a href="Accueil.php">Accueil</a></li>
@@ -24,12 +24,12 @@
     </div>
         <div class="page-connexion">
             <div class="formulaire">
-                <form class="connexion-formulaire">
-                    <input type="text" placeholder="nom">
-                    <input type="text" placeholder="prénom">
-                    <input type="email" placeholder="email">
-                    <input type="password" placeholder="mot de passe">
-                    <button type="submit">S'inscrire</button>
+                <form class="connexion-formulaire" action="traitement.php" method="post">
+                    <input type="text" name="nom" placeholder="nom">
+                    <input type="text" name="prenom" placeholder="prenom">
+                    <input type="email" name="email" placeholder="email">
+                    <input type="password" name="mdp" placeholder="mot de passe">
+                    <button type="submit" name="submit">S'inscrire</button>
                     
                     <p class="message">déjà inscrit ? <a href="connexion.php">se connecter</a></p>
                 </form>
@@ -43,5 +43,5 @@
         </ul>
     </footer>
 </body>
-
 </html>
+

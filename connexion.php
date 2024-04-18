@@ -11,7 +11,7 @@
 <body>
     <nav>
         <div class="logo">
-            <a href="index.php">VoteMyMusic</a>
+            <a href="Accueil.php">VoteMyMusic</a>
         </div>
         <ul class="nav-links">
             <li><a href="Accueil.php">Accueil</a></li>
@@ -20,18 +20,18 @@
         </ul>
     </nav>
     <div class="Titre">
-    <h1>CONNECTEZ-VOUS</h1>
+        <h1>CONNECTEZ-VOUS</h1>
     </div>
-        <div class="page-connexion">
-            <div class="formulaire">
-                <form class="login-form">
-                    <input type="text" placeholder="nom" />
-                    <input type="password" placeholder="mot de passe" />
-                    <button type="submit">Se connecter</button>
-                    <p class="message">pas de compte ? <a href="inscription.php">s'inscrire</a></p>
-                </form>
-            </div>
+    <div class="page-connexion">
+        <div class="formulaire">
+            <form class="login-form" action="traitement2.php" method="post">
+                <input type="text" name="nom" placeholder="nom" />
+                <input type="password" name="mdp" placeholder="mot de passe" />
+                <button type="submit" name="submit">Se connecter</button>
+                <p class="message">pas de compte ? <a href="inscription.php">s'inscrire</a></p>
+            </form>
         </div>
+    </div>
     <footer>
         <ul class="footer-links">
             <li><a href="#">Accueil</a></li>

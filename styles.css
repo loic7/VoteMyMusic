@@ -37,6 +37,7 @@ nav {
 .nav-links li {
     display: inline;
     margin: 0 15px;
+    margin-left: 5px;
 }
 
 .nav-links li a {
@@ -67,7 +68,7 @@ header {
     background-size: cover; 
     background-position: center;
     margin:0;
-    padding: 100px 0; /* Ajuste le padding pour conserver l'espacement */
+    padding: 100px 0;
     color: #000000;
     text-align: center;
     font-size: 40px;
@@ -166,11 +167,13 @@ footer {
 .footer-links {
     list-style: none;
     padding: 0;
+    margin-left:32px;
 }
 
 .footer-links li {
     display: inline;
     margin: 0 10px;
+    margin-left: 10px;
 }
 
 .footer-links li a {
