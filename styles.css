@@ -3,13 +3,16 @@ body {
     margin: 0;
     padding: 0;
 }
+
+
+/*
 .main {
     padding-top: 100px;
     background-color: #333;
     padding-bottom: 100px;
 }
 
-/* CSS pour la barre de navigation */
+ CSS pour la barre de navigation
 nav {
     background-color: #000000;
     color: #fff;
@@ -25,7 +28,7 @@ nav {
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
-    margin: 10px;  
+    margin: 10px;
 }
 
 .nav-links {
@@ -65,9 +68,9 @@ nav {
 
 header {
     background-image: url(background.jpg);
-    background-size: cover; 
+    background-size: cover;
     background-position: center;
-    margin:0;
+    margin: 0;
     padding: 100px 0;
     color: #000000;
     text-align: center;
@@ -99,11 +102,12 @@ header {
     background-color: #915006;
 }
 
-/* form*/
-.Titre{
+/* form
+.Titre {
     text-align: center;
     margin-top: 50px;
 }
+
 .formulaire {
     display: flex;
     background-color: #fff;
@@ -156,7 +160,7 @@ header {
 
 
 
-/* Ajout de styles pour le footer */
+/* Ajout de styles pour le footer
 footer {
     background-color: #000000;
     color: #fff;
@@ -167,7 +171,7 @@ footer {
 .footer-links {
     list-style: none;
     padding: 0;
-    margin-left:32px;
+    margin-left: 32px;
 }
 
 .footer-links li {
@@ -184,3 +188,4 @@ footer {
 .footer-links li a:hover {
     text-decoration: underline;
 }
+*/
