@@ -9,6 +9,13 @@
 </head>
 
 <body>
+    <?php
+    if (isset($_SESSION['connected'])) {
+        $musiqueLink = 'musique.php';
+    } else {
+        $musiqueLink = 'connexion.php';
+    }
+    ?>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">VoteMyMusic</a>
@@ -19,6 +26,9 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="Accueil.php">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo $musiqueLink; ?>">Ajouter & Voter</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="doc.php">Doc</a>

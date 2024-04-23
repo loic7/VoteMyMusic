@@ -1,5 +1,13 @@
 <?php
+session_start();
+
 include 'conn.php';
+
+if (isset($_SESSION['connected'])) {
+    $musiqueLink = 'musique.php';
+} else {
+    $musiqueLink = 'connexion.php';
+}
 
 // Vérifier si le formulaire est soumis
 if (isset($_POST['submit'])) {
@@ -66,6 +74,9 @@ $result = $conn->query($sql);
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="Accueil.php">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo $musiqueLink; ?>">Ajouter & Voter</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="doc.php">Doc</a>

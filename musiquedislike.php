@@ -1,5 +1,14 @@
 <?php
+session_start();
+
 include 'conn.php';
+
+if (isset($_SESSION['connected'])) {
+    $musiqueLink = 'musique.php';
+} else {
+    $musiqueLink = 'connexion.php';
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +32,9 @@ include 'conn.php';
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="Accueil.php">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo $musiqueLink; ?>">Ajouter & Voter</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="doc.php">Doc</a>
