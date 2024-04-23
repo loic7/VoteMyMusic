@@ -9,10 +9,17 @@
 </head>
 
 <body>
-    <?php
-    // Démarrer la session
-    session_start();
-    ?>
+<?php
+session_start();
+
+// Vérifiez si l'utilisateur est connecté
+if (isset($_SESSION['connected'])) {
+    $musiqueLink = 'musique.php';
+} else {
+    $musiqueLink = 'connexion.php';
+}
+?>
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">VoteMyMusic</a>
@@ -49,7 +56,7 @@
                 Rejoignez-nous dans cette expérience musicale unique et contribuez à créer une ambiance personnalisée pour vos vacances idéales. Vos choix musicaux comptent, alors n'hésitez pas à participer !</p>
             <hr class="my-4">
             <p>Cliquez sur le bouton ci-dessous pour en savoir plus.</p>
-            <a class="btn btn-warning btn-lg d-inline-block mx-auto" href="musique.php" role="button">En savoir plus</a>
+            <a class="btn btn-warning btn-lg d-inline-block mx-auto" href="<?php echo $musiqueLink; ?>" role="button">En savoir plus</a>
         </div>
     </div>
     <footer class="footer mt-auto py-3 bg-light">

@@ -21,6 +21,7 @@ if (isset($_POST['submit'])) {
                 session_start();
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_nom'] = $user['nom'];
+                $_SESSION['connected'] = true;
 
                 // Redirection vers une page de succès ou d'accueil
                 header('Location: Accueil.php');
@@ -40,3 +41,4 @@ if (isset($_POST['submit'])) {
 }
 ?>
 <a href="Accueil.php" class="btn">retour</a>
+
