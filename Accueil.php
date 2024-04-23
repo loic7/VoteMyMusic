@@ -32,7 +32,10 @@ if (isset($_SESSION['connected'])) {
                         <a class="nav-link active" aria-current="page" href="Accueil.php">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Documentation.php">Doc</a>
+                        <a class="nav-link" href="Doc.php">Doc</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.php">Contact</a>
                     </li>
                 </ul>
             </div>

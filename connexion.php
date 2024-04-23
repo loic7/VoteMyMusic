@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">VoteMyMusic</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,28 +21,38 @@
                         <a class="nav-link active" aria-current="page" href="Accueil.php">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Documentation.php">Doc</a>
+                        <a class="nav-link" href="doc.php">Doc</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.php">Contact</a>
                     </li>
                 </ul>
             </div>
+            <ul class="navbar-nav ml-auto"> <!-- Utilisation de ml-auto pour aligner à droite -->
+                <li class="nav-item">
+                    <a href="inscription.php" type="button" class="btn btn-warning">S'inscrire</a>
+                </li>
+            </ul>
         </div>
     </nav>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card mt-5">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Connectez-vous</h5>
-                        <form class="login-form" action="traitement2.php" method="post">
-                            <div class="mb-3">
-                                <input type="text" class="form-control" name="nom" placeholder="Nom">
-                            </div>
-                            <div class="mb-3">
-                                <input type="password" class="form-control" name="mdp" placeholder="Mot de passe">
-                            </div>
-                            <button type="submit" name="submit" class="btn btn-primary w-100">Se connecter</button>
-                            <p class="mt-3 text-center">Pas de compte ? <a href="inscription.php">S'inscrire</a></p>
-                        </form>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 50vh;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card mt-5">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Connectez-vous</h5>
+                            <form class="login-form" action="traitement2.php" method="post">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="nom" placeholder="Nom">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" name="mdp" placeholder="Mot de passe">
+                                </div>
+                                <button type="submit" name="submit" class="btn btn-primary w-100">Se connecter</button>
+                                <p class="mt-3 text-center">Pas de compte ? <a href="inscription.php">S'inscrire</a></p>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -57,4 +69,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
