@@ -8,48 +8,6 @@ if (isset($_SESSION['connected'])) {
 } else {
     $musiqueLink = 'connexion.php';
 }
-
-// Vérifier si le formulaire est soumis
-if (isset($_POST['submit'])) {
-    $titre = $_POST['titre'];
-    $artiste = $_POST['artiste'];
-    $lien = $_POST['lien'];
-
-    try {
-        // Préparer et exécuter la requête d'insertion
-        $sql = "INSERT INTO Musiques (titre, artiste, lien) VALUES (:titre, :artiste, :lien)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':titre', $titre);
-        $stmt->bindParam(':artiste', $artiste);
-        $stmt->bindParam(':lien', $lien);
-        $stmt->execute();
-        echo "Nouvelle chanson ajoutée avec succès!";
-    } catch (PDOException $e) {
-        echo "Erreur: " . $e->getMessage();
-    }
-}
-
-// Traitement pour liker ou disliker une musique
-if (isset($_POST['action']) && isset($_POST['music_id'])) {
-    $action = $_POST['action'];
-    $music_id = $_POST['music_id'];
-    try {
-        if ($action == 'like') {
-            $sql = "UPDATE Musiques SET likes = likes + 1 WHERE id = :id";
-        } elseif ($action == 'dislike') {
-            $sql = "UPDATE Musiques SET dislikes = dislikes + 1 WHERE id = :id";
-        }
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':id', $music_id);
-        $stmt->execute();
-    } catch (PDOException $e) {
-        echo "Erreur: " . $e->getMessage();
-    }
-}
-
-// Récupérer les pistes de musique ajoutées depuis la base de données
-$sql = "SELECT * FROM Musiques";
-$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -98,13 +56,59 @@ $result = $conn->query($sql);
             </ul>
         </div>
     </nav>
+    <?php
+    // Vérifier si le formulaire est soumis
+if (isset($_POST['submit'])) {
+    $titre = $_POST['titre'];
+    $artiste = $_POST['artiste'];
+
+    // Vérifier si un fichier mp3 a été téléchargé
+    if (isset($_FILES['fichier'])) {
+        $fichier = file_get_contents($_FILES['fichier']['tmp_name']);
+
+        // Préparer et exécuter la requête d'insertion
+        $sql = "INSERT INTO Musiques (titre, artiste, fichier) VALUES (:titre, :artiste, :fichier)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':titre', $titre);
+        $stmt->bindParam(':artiste', $artiste);
+        $stmt->bindParam(':fichier', $fichier, PDO::PARAM_LOB);
+        $stmt->execute();
+        echo "Nouvelle chanson ajoutée avec succès!";
+        header("Refresh:0.5; url=musique.php"); // Rediriger vers reussi.php après 2 secondes
+    } else {
+        echo "Veuillez télécharger un fichier mp3 valide.";
+    }
+}
+
+// Traitement pour liker ou disliker une musique
+if (isset($_POST['action']) && isset($_POST['music_id'])) {
+    $action = $_POST['action'];
+    $music_id = $_POST['music_id'];
+    try {
+        if ($action == 'like') {
+            $sql = "UPDATE Musiques SET likes = likes + 1 WHERE id = :id";
+        } elseif ($action == 'dislike') {
+            $sql = "UPDATE Musiques SET dislikes = dislikes + 1 WHERE id = :id";
+        }
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id', $music_id);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        echo "Erreur: " . $e->getMessage();
+    }
+}
+
+// Récupérer les pistes de musique ajoutées depuis la base de données
+$sql = "SELECT * FROM Musiques";
+$result = $conn->query($sql);
+    ?>
 
 
     <div class="container d-flex align-items-center justify-content-center" style="min-height: 50vh;">
         <div class="row">
             <div class="col">
             <h2 class="text-center">Ajouter une musique</h2>
-                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
                     <div class="row mb-3">
                         <label for="Titre" class="col-sm-2 col-form-label">Titre</label>
                         <div class="col-sm-10">
@@ -118,9 +122,9 @@ $result = $conn->query($sql);
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Lien</label>
+                        <label for="fichier" class="col-sm-2 col-form-label">Fichier mp3</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputEmail3" name="lien">
+                            <input type="file" class="form-control" id="fichier" name="fichier" accept=".mp3">
                         </div>
                     </div>
                     <div class="d-grid gap-2 col-6 mx-auto">
@@ -130,8 +134,6 @@ $result = $conn->query($sql);
             </div>
         </div>
     </div>
-
-
 
     <div class="container">
     <div class="row justify-content-center">
@@ -144,7 +146,7 @@ $result = $conn->query($sql);
                             <th scope="col">#</th>
                             <th scope="col">Titre</th>
                             <th scope="col">Artiste</th>
-                            <th scope="col">Lien</th>
+                            <th scope="col">Extrait</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -158,7 +160,7 @@ $result = $conn->query($sql);
                                 echo "<th scope='row'>" . $i . "</th>";
                                 echo "<td>" . $row['titre'] . "</td>";
                                 echo "<td>" . $row['artiste'] . "</td>";
-                                echo "<td><a href='" . $row['lien'] . "' target='_blank'>Lien</a></td>";
+                                echo "<td><audio controls><source src='data:audio/mp3;base64," . base64_encode($row['fichier']) . "' type='audio/mp3'></audio></td>";
                                 echo "<td>";
                                 echo "<div class='d-grid gap-2 d-md-block'>";
                                 echo "<form method='post' action='" . $_SERVER['PHP_SELF'] . "'>";
@@ -197,4 +199,21 @@ $result = $conn->query($sql);
         </div>
     </footer>
 </body>
+<script>
+    // Sélectionner tous les éléments audio de la page
+const audioElements = document.querySelectorAll('audio');
+
+// Ajouter un écouteur d'événements à chaque élément audio
+audioElements.forEach(audio => {
+  audio.addEventListener('play', event => {
+    // Pause tous les autres éléments audio lorsqu'un élément est joué
+    audioElements.forEach(otherAudio => {
+      if (otherAudio !== audio) {
+        otherAudio.pause();
+      }
+    });
+  });
+});
+
+</script>
 </html>

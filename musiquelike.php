@@ -68,6 +68,7 @@ if (isset($_SESSION['connected'])) {
                                 <tr>
                                     <th scope="col">Titre</th>
                                     <th scope="col">Artiste</th>
+                                    <th scope="col">Extrait</th>
                                     <th scope="col">Likes</th>
                                 </tr>
                             </thead>
@@ -81,11 +82,12 @@ if (isset($_SESSION['connected'])) {
                                         echo "<tr>";
                                         echo "<td>" . $row_likes['titre'] . "</td>";
                                         echo "<td>" . $row_likes['artiste'] . "</td>";
+                                        echo "<td><audio controls><source src='data:audio/mp3;base64," . base64_encode($row_likes['fichier']) . "' type='audio/mp3'></audio></td>";
                                         echo "<td>" . $row_likes['likes'] . "</td>";
                                         echo "</tr>";
                                     }
                                 } else {
-                                    echo "<tr><td colspan='3'>Aucune musique n'a encore été aimée.</td></tr>";
+                                    echo "<tr><td colspan='4'>Aucune musique n'a encore été aimée.</td></tr>";
                                 }
                                 ?>
                             </tbody>
@@ -112,5 +114,22 @@ if (isset($_SESSION['connected'])) {
         </div>
     </footer>
 </body>
+<script>
+    // Sélectionner tous les éléments audio de la page
+const audioElements = document.querySelectorAll('audio');
+
+// Ajouter un écouteur d'événements à chaque élément audio
+audioElements.forEach(audio => {
+  audio.addEventListener('play', event => {
+    // Pause tous les autres éléments audio lorsqu'un élément est joué
+    audioElements.forEach(otherAudio => {
+      if (otherAudio !== audio) {
+        otherAudio.pause();
+      }
+    });
+  });
+});
+
+</script>
 
 </html>
