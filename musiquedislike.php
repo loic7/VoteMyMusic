@@ -37,6 +37,9 @@ if (isset($_SESSION['connected'])) {
                         <a class="nav-link" href="<?php echo $musiqueLink; ?>">Ajouter & Voter</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="reservation.php">Reserver</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="doc.php">Doc</a>
                     </li>
                     <li class="nav-item">
